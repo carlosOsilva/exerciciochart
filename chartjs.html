@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando o ChartJs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body style="display: flex;">
+
+    <div>
+        <canvas id="sensor" style="position: relative; height:65vh; width:48vw"></canvas>
+    </div>
+
+    <div>
+        <canvas id="mensal" style="position: relative; height:65vh; width:48vw"></canvas>
+    </div>
+    
+</body>
+</html>
+
+<script>
+    const ctx = document.getElementById('sensor');
+    const ctx2 = document.getElementById('mensal');
+  
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [{
+          label: 'Temperatura',
+          backgroundColor: 'rgb(255,0,0)',
+          borderColor: 'rgb(255,0,0)',
+          data: [30, 29, 28, 25, 22, 23],
+          borderWidth: 2
+        },
+
+        {
+          label: 'Umidade',
+          backgroundColor: 'rgb(0,0,255)',
+          borderColor: 'rgb(0,0,255)',
+          data: [80, 82, 80, 85, 80, 83],
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junhos'],
+        datasets: [{
+          label: 'Temperatura Média',
+          backgroundColor: 'rgb(255,0,0)',
+          borderColor: 'rgb(255,0,0)',
+          data: [22, 24, 27, 23, 20, 17],
+          borderWidth: 1
+        },
+
+        {
+          label: 'Umidade Média',
+          backgroundColor: 'rgb(0,0,255)',
+          borderColor: 'rgb(0,0,255)',
+          data: [90, 89, 93, 87, 88, 82],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
